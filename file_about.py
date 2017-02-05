@@ -1,8 +1,8 @@
-import os
+import os, HTML
 
 main_table = []
 
-for filename in os.listdir("D:\\file_table"):
+for filename in os.listdir("D:\\file_table\\file_table"):
     info = os.stat(filename)
     size = info.st_size
     path = os.path.realpath(filename)
@@ -18,3 +18,6 @@ for filename in os.listdir("D:\\file_table"):
     main_table.append(file_inf)
 
 print (main_table)
+
+htmlcode = HTML.table(main_table)
+print (htmlcode)
