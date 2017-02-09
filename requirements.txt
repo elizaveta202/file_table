@@ -1,0 +1,5 @@
+In order to be able to run file_table, you have to install HTML module. 
+https://www.decalage.info/python/html#attachments Here is the package with instructions and needed files.
+But it is better to substitute HTML.py given in this package with HTML.py from this repo
+
+The other way is just to download HTML.pz from this repo and save it in the same directorz as the script.
