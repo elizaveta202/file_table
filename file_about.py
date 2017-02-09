@@ -1,11 +1,13 @@
-import os, HTML
+import sys, os, HTML
 
 main_table = []
 
-print ("Please specify the path to the target folder")
-path = input()
+#print ("Please specify the path to the target folder")
+#path = input()
 #path.replace('\\','\\\\')
 #print (string)
+
+path = sys.argv[1]
                     
 for filename in os.listdir(path):
     info = os.stat(filename)
