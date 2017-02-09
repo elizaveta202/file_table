@@ -2,7 +2,12 @@ import os, HTML
 
 main_table = []
 
-for filename in os.listdir("D:\\file_table\\file_table"):
+print ("Please specify the path to the target folder")
+path = input()
+#path.replace('\\','\\\\')
+#print (string)
+                    
+for filename in os.listdir(path):
     info = os.stat(filename)
     size = info.st_size
     path = os.path.realpath(filename)
@@ -17,7 +22,18 @@ for filename in os.listdir("D:\\file_table\\file_table"):
 
     main_table.append(file_inf)
 
-print (main_table)
 
-htmlcode = HTML.table(main_table)
-print (htmlcode)
+
+htmlcode = str(HTML.table(main_table,header_row=['Name',   'Extension',   'Size (Bytes)', 'Path']))
+
+
+f = open("file's table.htm", "w")
+
+for i in htmlcode:
+    f.write(i)
+f.close()
+    
+print ("The table has been created. You can find it in the same directory as this script.")
+
+    
+
