@@ -2,11 +2,7 @@ import sys, os, HTML
 
 main_table = []
 
-print ("Please specify the path to the target folder")
-path_ = input()
-print (path_)
-
-#path = sys.argv[1]
+path_ = sys.argv[1]
                     
 for filename in os.listdir(path_):
     
