@@ -2,19 +2,21 @@ import sys, os, HTML
 
 main_table = []
 
-#print ("Please specify the path to the target folder")
-#path = input()
-#path.replace('\\','\\\\')
-#print (string)
+print ("Please specify the path to the target folder")
+path_ = input()
+print (path_)
 
-path = sys.argv[1]
+#path = sys.argv[1]
                     
-for filename in os.listdir(path):
-    info = os.stat(filename)
-    size = info.st_size
-    path = os.path.realpath(filename)
+for filename in os.listdir(path_):
+    
+    path = path_+"\\"+filename
+    #print ("fullpath " +path)
+    size = os.path.getsize(path)
+    
     fullname = os.path.basename(path)
     fullname = fullname.split(".")
+    
     file_inf = []
     file_inf.append(fullname[0])
     file_inf.append(fullname[1])
