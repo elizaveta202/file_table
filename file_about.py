@@ -1,32 +1,25 @@
 import sys, os, HTML, argparse, re
 
 def table(path_, exc):
-    #pattern = re.compile("*.4", re.IGNORECASE)
-
     
     main_table = []
+
+    for root, dirs, files in os.walk(path_):
+        for name in files:
+            fullname = name.split(".")
+            path = os.path.join(root, name)
+            size = os.path.getsize(os.path.join(root, name))
+
+            if exc and not re.search(exc, name) or not exc:
+                file_inf = []
+            
+                file_inf.append(fullname[0])
+                file_inf.append(fullname[1])
+                file_inf.append(size)
+                file_inf.append(path)
     
 
-    #path_ = sys.argv[1]
-                    
-    for filename in os.listdir(path_):
-    
-        path = path_+"\\"+filename
-        #print ("fullpath " +path)
-        size = os.path.getsize(path)
-    
-        fullname = os.path.basename(path)
-        
-        if not re.search(exc, fullname):
-            file_inf = []
-            fullname = fullname.split(".")
-            file_inf.append(fullname[0])
-            file_inf.append(fullname[1])
-            file_inf.append(size)
-            file_inf.append(path)
-
-
-            main_table.append(file_inf)
+                main_table.append(file_inf)
 
     htmlcode = str(HTML.table(main_table,header_row=['Name',   'Extension',   'Size (Bytes)', 'Path']))
     f = open("file's table.htm", "w")
@@ -47,7 +40,7 @@ if args.exclude:
     table(args.dir, args.exclude)
     
 else:
-    
+    print (args.exclude)
     table(args.dir, args.exclude)
 
 
