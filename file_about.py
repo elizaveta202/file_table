@@ -36,11 +36,7 @@ parser.add_argument("dir", help = "create html-table with information about the 
 parser.add_argument("--exclude", action="store", help="exclude files with pointed directory")
 args = parser.parse_args()
 
-if args.exclude:
-    table(args.dir, args.exclude)
-    
-else:
-    print (args.exclude)
-    table(args.dir, args.exclude)
+
+table(args.dir, args.exclude)
 
 
