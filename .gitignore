@@ -8,12 +8,15 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+<<<<<<< HEAD
 #libs
 Include/
 Lib/
 Scripts/
 Tcl/
 
+=======
+>>>>>>> parent of e6492c3... if-els fixed
 # Windows Installer files
 *.cab
 *.msi

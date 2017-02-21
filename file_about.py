@@ -1,25 +1,37 @@
 import sys, os, HTML, argparse, re
+from path import Path
 
 def table(path_, exc):
     
     main_table = []
 
-    for root, dirs, files in os.walk(path_):
-        for name in files:
-            fullname = name.split(".")
-            path = os.path.join(root, name)
-            size = os.path.getsize(os.path.join(root, name))
+    target_dir = Path(path_)
+    
 
-            if exc and not re.search(exc, name) or not exc:
+    for f in target_dir.walkfiles():
+    	fname = f.basename()
+  
+    	ext = fname.split(".")[-1]
+    	fname = fname.split(".")[0:-1]
+    	name ="".join(fname)
+    	
+    	size = f.getsize()
+    	path = os.path.join(path_, f.basename())
+    	
+
+    	if exc and not re.search(exc, name) or not exc:
                 file_inf = []
             
-                file_inf.append(fullname[0])
-                file_inf.append(fullname[1])
+                file_inf.append(name)
+                file_inf.append(ext)
                 file_inf.append(size)
                 file_inf.append(path)
     
 
                 main_table.append(file_inf)
+    	
+
+    
 
     htmlcode = str(HTML.table(main_table,header_row=['Name',   'Extension',   'Size (Bytes)', 'Path']))
     f = open("file's table.htm", "w")
@@ -33,7 +45,7 @@ def table(path_, exc):
     
 parser = argparse.ArgumentParser()
 parser.add_argument("dir", help = "create html-table with information about the files in target directory")
-parser.add_argument("--exclude", action="store", help="exclude files with pointed directory")
+parser.add_argument("--exclude", action="store", help="exclude files with pointed pattern")
 args = parser.parse_args()
 
 table(args.dir, args.exclude)
