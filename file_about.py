@@ -37,12 +37,15 @@ def table(path_, exc):
     
     print ("The table has been created. You can find it in the same directory as this script.")
 
-    
-parser = argparse.ArgumentParser()
-parser.add_argument("dir", help = "create html-table with information about the files in target directory")
-parser.add_argument("--exclude", action="store", help="exclude files with pointed pattern")
-args = parser.parse_args()
+    return main_table
 
-table(args.dir, args.exclude)
+if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help = "create html-table with information about the files in target directory")
+    parser.add_argument("--exclude", action="store", help="exclude files with pointed pattern")
+    args = parser.parse_args()
+
+    table(args.dir, args.exclude)
 
 
