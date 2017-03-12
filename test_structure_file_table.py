@@ -21,7 +21,9 @@ def file_table(new_path, lvl):
             list_inf.append(str(i))
             list_inf.append(".txt")
             list_inf.append(os.path.getsize(new_path+str(i)+".txt"))
-            list_inf.append(new_path+str(i)+".txt")
+            #list_inf.append(new_path+str(i)+".txt")
+            path = Path(new_path+str(i)+".txt")
+            list_inf.append(path)
             main_table.append(list_inf)
             
             i+=1
@@ -32,6 +34,6 @@ def file_table(new_path, lvl):
     return main_table
     
 if __name__=="__main__":
-    new_path = "D:/test_dir/"
+    new_path = "D:/new_dir/"
     file_table(new_path, 0)
     print (main_table)

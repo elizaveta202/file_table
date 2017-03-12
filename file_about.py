@@ -1,4 +1,4 @@
-import sys, os, HTML, argparse, re
+import HTML, argparse, re
 
 
 from pathlib import Path
